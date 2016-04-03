@@ -7,15 +7,15 @@ import br.com.javainrio.entidade.Palestra;
 
 public interface PalestraDAO {
 
-	public void alterar(Palestra ingrediente);
+	public void alterar(Palestra palestra);
 
-	public Palestra consultar(Palestra ingrediente);
+	public Palestra consultar(Palestra palestra);
 
-	public void excluir(Palestra ingrediente);
+	public void excluir(Palestra palestra);
 
-	public boolean existe(Palestra ingrediente);
+	public boolean existe(Palestra palestra);
 
-	public void inserir(Palestra ingrediente);
+	public void inserir(Palestra palestra);
 
 	public List<Palestra> listar();
 
