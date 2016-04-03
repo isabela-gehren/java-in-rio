@@ -20,7 +20,7 @@
             <p:password id="senha" value="#{usuarioMB.usuario.senha}" required="true" label="senha" />
  
             <f:facet name="footer">
-                <p:commandButton value="Login" update="growl" action="#{usuarioMB.usuario.login}" />
+                <p:commandButton value="Login" update="growl" action="#{usuarioMB.login}" />
             </f:facet>  
         </h:panelGrid>
 </h:form>
