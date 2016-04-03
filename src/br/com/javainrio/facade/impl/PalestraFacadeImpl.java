@@ -1,11 +1,13 @@
 package br.com.javainrio.facade.impl;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.*;
+import javax.persistence.criteria.*;
 
 import br.com.javainrio.entidade.Palestra;
 import br.com.javainrio.facade.PalestraFacade;
@@ -50,6 +52,13 @@ public class PalestraFacadeImpl implements PalestraFacade {
 		CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
 		cq.select(cq.from(Palestra.class));
 		return (List<Palestra>) em.createQuery(cq).getResultList();
+	}
+
+	@Override
+	public List<Palestra> listarDoAnoCorrente() {
+		List<Palestra> tudo = listar();
+		List<Palestra> palestrasDoAnoCorrente = tudo.stream().filter(p -> p.getDataHora().getYear() == new Date().getYear()).collect(Collectors.toList());
+		return (List<Palestra>)palestrasDoAnoCorrente;
 	}
 
 }

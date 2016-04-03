@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<ui:composition template="./Template.xhtml">
+		<ui:define name="content">
+		
+		<h:form id="formPrincipal">
+		
+			<!-- TABELA DE INGRESSOS -->
+			<p:dataTable id="tabela" var="item" value="#{diaEventoMB.lista}" paginator="true" rows="50" style="width:800px;"
+			             emptyMessage="Não há registros na lista"
+						 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						 paginatorPosition="bottom" rowsPerPageTemplate="10,15,25,50,100">
+			    
+			    <p:column headerText="Dia">
+			        <h:outputText value="#{item.data}" />
+			    </p:column>
+			 
+			    <p:column headerText="Palestras">
+			        <h:outputText value="" />
+			    </p:column>
+			 
+			    <p:column headerText="Preço">
+			        <h:outputText value="#{item.preco}" />
+			    </p:column>
+			    
+			    <p:column headerText="Comprar">
+			        <h:outputText value="" />
+			    </p:column>
+			</p:dataTable>
+			
+			<!-- BOTÃO COMPRAR -->
+			
+		</h:form>
+			
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
