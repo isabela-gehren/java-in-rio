@@ -19,6 +19,7 @@ public class Palestra implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer codigo;
+	@Column(unique=true)
 	private String titulo;
 	private Date dataHora;
 	private String local;
@@ -26,6 +27,14 @@ public class Palestra implements Serializable {
 	private String descricao;
 	
 	public Palestra(){}
+	
+	public Integer getCodigo() {
+		return codigo;
+	}
+	
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
 	
 	public String getTitulo() {
 		return titulo;
@@ -57,5 +66,6 @@ public class Palestra implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 	
 }
