@@ -16,40 +16,47 @@
 					<p:panelGrid columns="2" style="horizontal-align:center">
 
 						<h:outputLabel for="nome" value="Nome:" />
-						<h:inputText id="nome" value="#{usuarioMB.usuario.nome}" />
+						<h:inputText id="nome" required="true"
+							value="#{usuarioMB.usuario.nome}" />
 
 						<h:outputText value="E-mail:" />
-						<h:inputText id="email" value="#{usuarioMB.usuario.email}"
+						<h:inputText id="email" required="true"
+							value="#{usuarioMB.usuario.email}"
 							validatorMessage="Informe um e-mail válido">
 							<f:validateRegex
 								pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 						</h:inputText>
 
 						<h:outputText value="Senha:" />
-						<p:password id="senha" value="#{usuarioMB.usuario.senha}"
-							feedback="true" promptLabel=" " weakLabel="Senha Fraca"
-							goodLabel="Senha Média" strongLabel="Senha Forte" />
+						<p:password id="senha" required="true"
+							value="#{usuarioMB.usuario.senha}" feedback="true"
+							promptLabel=" " weakLabel="Senha Fraca" goodLabel="Senha Média"
+							strongLabel="Senha Forte" />
 
 						<h:outputLabel value="CPF" />
-						<p:inputMask id="cpf" value="#{usuarioMB.usuario.cpf}"
-							mask="999.999.999-99" />
+						<p:inputMask id="cpf" required="true"
+							value="#{usuarioMB.usuario.cpf}" mask="999.999.999-99" />
 
 						<h:outputLabel value="CEP:" />
-						<p:inputMask id="cep" value="#{usuarioMB.usuario.cep}"
-							mask="99.999-999" />
+						<p:inputMask id="cep" required="true"
+							value="#{usuarioMB.usuario.cep}" mask="99.999-999" />
 
 						<h:outputText value="Endereço:" />
-						<h:inputText id="endereco" value="#{usuarioMB.usuario.endereco}" />
+						<h:inputText id="endereco" required="true"
+							value="#{usuarioMB.usuario.endereco}" />
 
 						<h:outputText value="Bairro:" />
-						<h:inputText id="bairro" value="#{usuarioMB.usuario.bairro}" />
+						<h:inputText id="bairro" required="true"
+							value="#{usuarioMB.usuario.bairro}" />
 
 						<h:outputText value="Cidade:" />
-						<h:inputText id="cidade" value="#{usuarioMB.usuario.cidade}" />
+						<h:inputText id="cidade" required="true"
+							value="#{usuarioMB.usuario.cidade}" />
 
 						<h:outputText value="Estado:" />
-						<p:selectOneMenu id="estado" value="#{usuarioMB.usuario.estado}"
-							var="t" filter="true" filterMatchMode="startsWith">
+						<p:selectOneMenu id="estado" required="true"
+							value="#{usuarioMB.usuario.estado}" var="t" filter="true"
+							filterMatchMode="startsWith">
 							<f:selectItem itemLabel="..." itemValue="" />
 							<f:selectItem itemLabel="AC" itemValue="AC" />
 							<f:selectItem itemLabel="AL" itemValue="AL" />
@@ -89,6 +96,6 @@
 
 			</p:panel>
 		</ui:define>
-		</ui:composition>
+	</ui:composition>
 </h:body>
 </html>

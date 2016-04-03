@@ -17,15 +17,36 @@
 		</div>
 		<h:form>
 			<p:tabMenu>
-				<p:menuitem value="Sobre" url="Sobre.xhtml" />
+				<p:menuitem value="Sobre" url="Index.xhtml" />
 				<p:menuitem value="Programação" url="Programacao.xhtml" />
-				<p:menuitem value="Login" url="Login.xhtml" />
-				<p:menuitem value="Cadastre-se" url="Usuario.xhtml" />
 				<p:menuitem value="Compre seu ingresso" url="Comprar.xhtml" />
+				<p:menuitem value="test" url="Usuario.xhtml">
+					<img src = "images/login.png" />
+				</p:menuitem>
 			</p:tabMenu>
+
+
+			<!-- Login Dialog 
+			<p:dialog header="Login" widgetVar="dlg" resizable="false">
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputLabel for="username" value="Username:" />
+					<p:inputText id="username" value="#{userLoginView.username}"
+						required="true" label="username" />
+
+					<h:outputLabel for="password" value="Password:" />
+					<p:password id="password" value="#{userLoginView.password}"
+						required="true" label="password" />
+
+					<f:facet name="footer">
+						<p:commandButton value="Login"
+							actionListener="#{userLoginView.login}" />
+					</f:facet>
+				</h:panelGrid>
+			</p:dialog>
+			 -->
 		</h:form>
 
-		<div class="content" style="padding:15px">
+		<div class="content" style="padding: 15px">
 			<ui:insert name="content">
 
 			</ui:insert>

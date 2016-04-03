@@ -91,15 +91,16 @@
 						<h:inputText id="codigo" value="#{palestraMB.palestra.codigo}" />
 
 						<h:outputLabel for="titulo" value="Título:" />
-						<p:inputText id="titulo" value="#{palestraMB.palestra.titulo}" />
+						<p:inputText id="titulo" required="true"
+							value="#{palestraMB.palestra.titulo}" />
 						<h:outputLabel value="Palestrante:" />
-						<p:inputText id="palestrante"
+						<p:inputText id="palestrante" required="true" 
 							value="#{palestraMB.palestra.palestrante}" />
 						<h:outputLabel value="Local:" />
-						<p:inputText id="local" value="#{palestraMB.palestra.local}" />
+						<p:inputText id="local"  required="true" value="#{palestraMB.palestra.local}" />
 
 						<h:outputLabel value="Data/Horário:" />
-						<p:calendar id="dataHora" value="#{palestraMB.palestra.dataHora}"
+						<p:calendar id="dataHora"  required="true" value="#{palestraMB.palestra.dataHora}"
 							pattern="dd/MM/yyyy HH:mm" />
 
 						<h:outputLabel value="Descrição:" />
