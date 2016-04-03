@@ -1,6 +1,9 @@
 package br.com.javainrio.mb;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -41,7 +44,9 @@ public class ProgramacaoMB implements Serializable {
 
 		for (Palestra p : palestras) {
 			Date dia = new Date(p.getDataHora().getYear(), p.getDataHora().getMonth(), p.getDataHora().getDate());
-
+			
+			LocalDate dateCurrent = p.getDataHora().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			
 			if (lista.stream().filter(p2 -> p2.getDia() == dia).count() == 0) {
 				List<Palestra> palestrasDoDia = new ArrayList<>();
 				palestrasDoDia.add(p);
