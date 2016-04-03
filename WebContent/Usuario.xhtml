@@ -1,90 +1,94 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-</h:head>
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
 <h:body>
-	<p:growl id="mensagem" showDetail="true" autoUpdate="true"
-		closable="true" />
-	<p:panel header="Cadastro de Usuário">
-		<h:form id="formCadastrar">
-			<h:inputHidden value="#{usuarioMB.usuario.codigo}" />
+	<ui:composition template="./Template.xhtml">
+		<ui:define name="content">
+			<p:growl id="mensagem" showDetail="true" autoUpdate="true"
+				closable="true" />
+			<p:panel header="Cadastro de Usuário">
+				<h:form id="formCadastrar">
+					<h:inputHidden value="#{usuarioMB.usuario.codigo}" />
 
-			<p:panelGrid columns="2" style="horizontal-align:center">
+					<p:panelGrid columns="2" style="horizontal-align:center">
 
-				<h:outputLabel for="nome" value="Nome:" />
-				<h:inputText id="nome" value="#{usuarioMB.usuario.nome}" />
+						<h:outputLabel for="nome" value="Nome:" />
+						<h:inputText id="nome" value="#{usuarioMB.usuario.nome}" />
 
-				<h:outputText value="E-mail:" />
-				<h:inputText id="email" value="#{usuarioMB.usuario.email}"
-					validatorMessage="Informe um e-mail válido">
-					<f:validateRegex
-						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-				</h:inputText>
+						<h:outputText value="E-mail:" />
+						<h:inputText id="email" value="#{usuarioMB.usuario.email}"
+							validatorMessage="Informe um e-mail válido">
+							<f:validateRegex
+								pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+						</h:inputText>
 
-				<h:outputText value="Senha:" />
-				<p:password id="senha" value="#{usuarioMB.usuario.senha}"
-					feedback="true" promptLabel=" " weakLabel="Senha Fraca"
-					goodLabel="Senha Média" strongLabel="Senha Forte" />
+						<h:outputText value="Senha:" />
+						<p:password id="senha" value="#{usuarioMB.usuario.senha}"
+							feedback="true" promptLabel=" " weakLabel="Senha Fraca"
+							goodLabel="Senha Média" strongLabel="Senha Forte" />
 
-				<h:outputLabel value="CPF" />
-				<p:inputMask id="cpf" value="#{usuarioMB.usuario.cpf}"
-					mask="999.999.999-99" />
+						<h:outputLabel value="CPF" />
+						<p:inputMask id="cpf" value="#{usuarioMB.usuario.cpf}"
+							mask="999.999.999-99" />
 
-				<h:outputLabel value="CEP:" />
-				<p:inputMask id="cep" value="#{usuarioMB.usuario.cep}"
-					mask="99.999-999" />
+						<h:outputLabel value="CEP:" />
+						<p:inputMask id="cep" value="#{usuarioMB.usuario.cep}"
+							mask="99.999-999" />
 
-				<h:outputText value="Endereço:" />
-				<h:inputText id="endereco" value="#{usuarioMB.usuario.endereco}" />
+						<h:outputText value="Endereço:" />
+						<h:inputText id="endereco" value="#{usuarioMB.usuario.endereco}" />
 
-				<h:outputText value="Bairro:" />
-				<h:inputText id="bairro" value="#{usuarioMB.usuario.bairro}" />
+						<h:outputText value="Bairro:" />
+						<h:inputText id="bairro" value="#{usuarioMB.usuario.bairro}" />
 
-				<h:outputText value="Cidade:" />
-				<h:inputText id="cidade" value="#{usuarioMB.usuario.cidade}" />
+						<h:outputText value="Cidade:" />
+						<h:inputText id="cidade" value="#{usuarioMB.usuario.cidade}" />
 
-				<h:outputText value="Estado:" />
-				<p:selectOneMenu id="estado" value="#{usuarioMB.usuario.estado}"
-					var="t" filter="true" filterMatchMode="startsWith">
-					<f:selectItem itemLabel="..." itemValue="" />
-					<f:selectItem itemLabel="AC" itemValue="AC" />
-					<f:selectItem itemLabel="AL" itemValue="AL" />
-					<f:selectItem itemLabel="AM" itemValue="AM" />
-					<f:selectItem itemLabel="AP" itemValue="AP" />
-					<f:selectItem itemLabel="BA" itemValue="BA" />
-					<f:selectItem itemLabel="CE" itemValue="CE" />
-					<f:selectItem itemLabel="DF" itemValue="DF" />
-					<f:selectItem itemLabel="ES" itemValue="ES" />
-					<f:selectItem itemLabel="GO" itemValue="GO" />
-					<f:selectItem itemLabel="MA" itemValue="MA" />
-					<f:selectItem itemLabel="MG" itemValue="MG" />
-					<f:selectItem itemLabel="MS" itemValue="MS" />
-					<f:selectItem itemLabel="MT" itemValue="MT" />
-					<f:selectItem itemLabel="PA" itemValue="PA" />
-					<f:selectItem itemLabel="PB" itemValue="PB" />
-					<f:selectItem itemLabel="PE" itemValue="PE" />
-					<f:selectItem itemLabel="PI" itemValue="PI" />
-					<f:selectItem itemLabel="PR" itemValue="PR" />
-					<f:selectItem itemLabel="RJ" itemValue="RJ" />
-					<f:selectItem itemLabel="RN" itemValue="RN" />
-					<f:selectItem itemLabel="RS" itemValue="RS" />
-					<f:selectItem itemLabel="RO" itemValue="RO" />
-					<f:selectItem itemLabel="RR" itemValue="RR" />
-					<f:selectItem itemLabel="SC" itemValue="SC" />
-					<f:selectItem itemLabel="SE" itemValue="SE" />
-					<f:selectItem itemLabel="SP" itemValue="SP" />
-					<f:selectItem itemLabel="TO" itemValue="TO" />
+						<h:outputText value="Estado:" />
+						<p:selectOneMenu id="estado" value="#{usuarioMB.usuario.estado}"
+							var="t" filter="true" filterMatchMode="startsWith">
+							<f:selectItem itemLabel="..." itemValue="" />
+							<f:selectItem itemLabel="AC" itemValue="AC" />
+							<f:selectItem itemLabel="AL" itemValue="AL" />
+							<f:selectItem itemLabel="AM" itemValue="AM" />
+							<f:selectItem itemLabel="AP" itemValue="AP" />
+							<f:selectItem itemLabel="BA" itemValue="BA" />
+							<f:selectItem itemLabel="CE" itemValue="CE" />
+							<f:selectItem itemLabel="DF" itemValue="DF" />
+							<f:selectItem itemLabel="ES" itemValue="ES" />
+							<f:selectItem itemLabel="GO" itemValue="GO" />
+							<f:selectItem itemLabel="MA" itemValue="MA" />
+							<f:selectItem itemLabel="MG" itemValue="MG" />
+							<f:selectItem itemLabel="MS" itemValue="MS" />
+							<f:selectItem itemLabel="MT" itemValue="MT" />
+							<f:selectItem itemLabel="PA" itemValue="PA" />
+							<f:selectItem itemLabel="PB" itemValue="PB" />
+							<f:selectItem itemLabel="PE" itemValue="PE" />
+							<f:selectItem itemLabel="PI" itemValue="PI" />
+							<f:selectItem itemLabel="PR" itemValue="PR" />
+							<f:selectItem itemLabel="RJ" itemValue="RJ" />
+							<f:selectItem itemLabel="RN" itemValue="RN" />
+							<f:selectItem itemLabel="RS" itemValue="RS" />
+							<f:selectItem itemLabel="RO" itemValue="RO" />
+							<f:selectItem itemLabel="RR" itemValue="RR" />
+							<f:selectItem itemLabel="SC" itemValue="SC" />
+							<f:selectItem itemLabel="SE" itemValue="SE" />
+							<f:selectItem itemLabel="SP" itemValue="SP" />
+							<f:selectItem itemLabel="TO" itemValue="TO" />
 
-				</p:selectOneMenu>
+						</p:selectOneMenu>
 
-			</p:panelGrid>
-			<p:commandButton value="Salvar" id="btnCadastrar"
-				action="#{usuarioMB.salvar}" update=":formCadastrar :mensagem" />
-		</h:form>
+					</p:panelGrid>
+					<p:commandButton value="Salvar" id="btnCadastrar"
+						action="#{usuarioMB.salvar}" update=":formCadastrar :mensagem" />
+				</h:form>
 
 
-	</p:panel>
+			</p:panel>
+		</ui:define>
+		</ui:composition>
 </h:body>
 </html>

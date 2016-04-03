@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>JAVA IN RIO</title>
+</h:head>
+
+<h:body>
+	<div class="page">
+		<div class="header">
+			<img src="images/java-in-rio-header.jpg" />
+		</div>
+		<h:form>
+			<p:tabMenu>
+				<p:menuitem value="Sobre" url="Sobre.xhtml" />
+				<p:menuitem value="Programação" url="Programacao.xhtml" />
+				<p:menuitem value="Login" url="Login.xhtml" />
+				<p:menuitem value="Cadastre-se" url="Usuario.xhtml" />
+				<p:menuitem value="Compre seu ingresso" url="Comprar.xhtml" />
+			</p:tabMenu>
+		</h:form>
+
+		<div class="content" style="padding:15px">
+			<ui:insert name="content">
+
+			</ui:insert>
+		</div>
+		<div class="footer"
+			style="margin: 20px; border-top: 1px solid; border-color: #E92D2E">
+			<p>Local: Centro de Convenções SulAmérica</p>
+			<p>Av. Paulo de Frontin, 1 - Cidade Nova, Rio de Janeiro - RJ,
+				20260-010</p>
+		</div>
+	</div>
+
+</h:body>
+</html>
