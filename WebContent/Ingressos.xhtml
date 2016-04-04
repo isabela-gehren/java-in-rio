@@ -17,7 +17,9 @@
 						 paginatorPosition="bottom" rowsPerPageTemplate="10,15,25,50,100">
 			    
 			    <p:column headerText="Dia">
-			        <h:outputText value="#{item.data}" />
+			        <h:outputText value="#{item.data}">
+			        	<f:convertDateTime pattern="dd/MM/yyyy" />
+			        </h:outputText>
 			    </p:column>
 			 
 			    <p:column headerText="Palestras">
@@ -25,11 +27,15 @@
 			    </p:column>
 			 
 			    <p:column headerText="Preço">
-			        <h:outputText value="#{item.preco}" />
+			        <h:outputText value="#{item.preco}">
+			        	<f:convertNumber pattern="¤#,##0.00" currencySymbol="R$ " />
+			        </h:outputText>
 			    </p:column>
 			    
 			    <p:column headerText="Comprar">
-			        <h:outputText value="" />
+					<h:commandButton value="Comprar" action="#{formBean.someAction}">
+					    <f:param name="DiaEvento" value="#{item.codigo}" />
+					</h:commandButton>
 			    </p:column>
 			</p:dataTable>
 			
