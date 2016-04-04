@@ -25,7 +25,8 @@
 				</p:menuitem>
 				
 				<p:menuitem rendered="#{usuarioMB.admin}" value="Administração" url="AdminDiaEvento.xhtml" />
-				<p:menuitem value="Login" url="Login.xhtml" />
+				<p:menuitem rendered="#{!usuarioMB.logado}" value="Login" url="Login.xhtml" />
+				<p:menuitem rendered="#{usuarioMB.logado}" value="Logout" action="#{usuarioMB.logout}"  />
 			</p:tabMenu>
 		</h:form>
 
