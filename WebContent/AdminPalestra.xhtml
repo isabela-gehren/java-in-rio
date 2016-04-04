@@ -1,15 +1,122 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html"
-	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:p="http://primefaces.org/ui"
-	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:body>
 	<ui:composition template="./AdminTemplate.xhtml">
 		<ui:define name="content">
-			<h:form>
+			<p:growl id="mensagem" showDetail="true" autoUpdate="true"
+				closable="true" />
+			<h:form id="formPrincipal">
+				<p:panel id="lista" header="Cadastro de Palestras">
+					<p:commandLink title="Incluir" oncomplete="dialogCadastrar.show()"
+						update=":formCadastrar" immediate="false">
+						<p:graphicImage value="/images/incluir_32.png" />
+					</p:commandLink>
+
+					<p:dataTable id="tabela" var="item" value="#{palestraMB.lista}"
+						paginator="true" rows="50"
+						emptyMessage="Não há registros na lista"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginatorPosition="bottom" rowsPerPageTemplate="10,15,25,50,100">
+						<p:column headerText="ID" style="width: 10%;"
+							sortBy="#{item.codigo}">
+							<h:outputText value="#{item.codigo}" />
+						</p:column>
+						<p:column headerText="Título" style="width: 25%;"
+							sortBy="#{item.titulo}">
+							<h:outputText value="#{item.titulo}" />
+						</p:column>
+						<p:column headerText="Data/Horário" style="width: 25%;"
+							sortBy="#{item.dataHora}">
+							<h:outputText value="#{item.dataHora}">
+								<f:convertDateTime pattern="dd/MM/yyyy HH:mm"
+									timeZone="America/Sao_Paulo" />
+							</h:outputText>
+						</p:column>
+						<p:column headerText="Palestrante" style="width: 25%;"
+							sortBy="#{item.palestrante}">
+							<h:outputText value="#{item.palestrante}" />
+						</p:column>
+						<p:column headerText="Local" style="width: 25%;"
+							sortBy="#{item.local}">
+							<h:outputText value="#{item.local}" />
+						</p:column>
+						<p:column headerText="Ações" style="width: 10%;"
+							exportable="false">
+							<p:commandLink title="Alterar" update=":formCadastrar"
+								oncomplete="dialogCadastrar.show()" immediate="true">
+								<p:graphicImage value="/images/editar.png" />
+								<f:setPropertyActionListener target="#{palestraMB.palestra}"
+									value="#{item}" />
+							</p:commandLink>
+							<p:commandLink title="Excluir" update=":formExcluir:Excluir"
+								oncomplete="confirmation.show()" immediate="false">
+								<p:graphicImage value="/images/excluir_16.png" />
+								<f:setPropertyActionListener target="#{palestraMB.palestra}"
+									value="#{item}" />
+							</p:commandLink>
+						</p:column>
+					</p:dataTable>
+				</p:panel>
 			</h:form>
+
+
+			<!-- Formulário de Exclusão -->
+			<h:form id="formExcluir">
+				<p:confirmDialog id="Excluir" closable="true"
+					message="Confirma a exclusão da palestra #{palestraMB.palestra.titulo}?"
+					header="Excluir" severity="alert" widgetVar="confirmation">
+					<h:inputHidden value="#{palestraMB.palestra.codigo}" />
+
+					<p:commandButton id="btnConfirmar" value="Sim"
+						oncomplete="confirmation.hide()" action="#{palestraMB.excluir}"
+						update=":formPrincipal:tabela :mensagem" />
+					<p:commandButton id="decline" value="Não"
+						onclick="confirmation.hide()" type="button" />
+				</p:confirmDialog>
+			</h:form>
+			<!-- Formulário de Exclusão -->
+
+
+
+			<!-- Formulário de Cadastro -->
+			<h:form id="formCadastrar">
+				<p:dialog header="Cadastrar" widgetVar="dialogCadastrar"
+					modal="false">
+					<p:panelGrid id="panelCadastrar" columns="2">
+						<h:outputText value="Código:" />
+						<h:inputText id="codigo" value="#{palestraMB.palestra.codigo}" />
+
+						<h:outputLabel for="titulo" value="Título:" />
+						<p:inputText id="titulo" required="true"
+							value="#{palestraMB.palestra.titulo}" />
+						<h:outputLabel value="Palestrante:" />
+						<p:inputText id="palestrante" required="true" 
+							value="#{palestraMB.palestra.palestrante}" />
+						<h:outputLabel value="Local:" />
+						<p:inputText id="local"  required="true" value="#{palestraMB.palestra.local}" />
+
+						<h:outputLabel value="Data/Horário:" />
+						<p:calendar id="dataHora"  required="true" value="#{palestraMB.palestra.dataHora}"
+							pattern="dd/MM/yyyy HH:mm" />
+
+						<h:outputLabel value="Descrição:" />
+						<p:inputTextarea rows="10" cols="50" id="descricao"
+							value="#{palestraMB.palestra.descricao}" />
+					</p:panelGrid>
+					<p:commandButton value="Salvar" id="btnCadastrar"
+						action="#{palestraMB.salvar}"
+						update=":formPrincipal:tabela :mensagem"
+						oncomplete="dialogCadastrar.hide()" />
+				</p:dialog>
+			</h:form>
+			<!-- Formulário de Cadastro -->
+
 		</ui:define>
 	</ui:composition>
+
 </h:body>
 </html>
