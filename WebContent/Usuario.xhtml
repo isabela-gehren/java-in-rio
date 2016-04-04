@@ -34,7 +34,7 @@
 							strongLabel="Senha Forte" />
 
 						<h:outputLabel value="CPF" />
-						<p:inputMask id="cpf" required="true"
+						<p:inputMask id="cpf" required="true" disabled="#{usuarioMB.logado}"
 							value="#{usuarioMB.usuario.cpf}" mask="999.999.999-99" />
 
 						<h:outputLabel value="CEP:" />

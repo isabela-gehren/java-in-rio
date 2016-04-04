@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<ui:composition template="./Template.xhtml">
+		<ui:define name="content">
+			<p:panel id="lista" header="Ingressos vendidos">
+
+				<p:dataTable id="tabela" paginator="true" rows="50"
+					emptyMessage="Não há registros na lista"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					paginatorPosition="bottom" rowsPerPageTemplate="10,15,25,50,100">
+					<p:column headerText="Ingresso" style="width: 10%;"
+						sortBy="#{item.codigo}">
+						<h:outputText value="#{item.codigo}" />
+					</p:column>
+					<p:column headerText="Usuário" style="width: 25%;"
+						sortBy="#{item.usuario.nome}">
+						<h:outputText value="#{item.usuario.nome}" />
+					</p:column>
+					<p:column headerText="Endereço de Entrega" style="width: 25%;">
+						<h:outputText value="#{item.usuario.endereco}" />
+					</p:column>
+					<p:column headerText="Dias" style="width: 25%;">
+						<h:outputText value="">
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Valor Pago" style="width: 25%;">
+						<h:outputText value="#{item.total}" />
+					</p:column>
+
+				</p:dataTable>
+			</p:panel>
+
+
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -11,39 +11,40 @@ public class Usuario implements Serializable {
 
 	@Id
 	private String codigo;
-	
+
 	private String nome;
-	
+
 	@Column(unique = true)
 	private String email;
-	
+
 	private String senha;
-	
+
 	@Column(length = 11, unique = true)
 	private String cpf;
-	
+
 	private String bairro;
-	
+
 	private String endereco;
-	
+
 	@Column(length = 8)
 	private String cep;
-	
+
 	private String cidade;
-	
+
 	@Column(length = 2)
 	private String estado;
-	
+
+	@Column(updatable = false)
 	private Boolean admin;
-	
-	public Usuario(){
+
+	public Usuario() {
 		this.codigo = UUID.randomUUID().toString();
 	}
 
 	public String getCodigo() {
 		return codigo;
 	}
-	
+
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}

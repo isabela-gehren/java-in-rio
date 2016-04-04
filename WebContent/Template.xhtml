@@ -20,8 +20,13 @@
 				<p:menuitem value="Sobre" url="Index.xhtml" />
 				<p:menuitem value="Programação" url="Programacao.xhtml" />
 				<p:menuitem value="Comprar Ingressos" url="Ingressos.xhtml" />
-				<p:menuitem value="Administração" url="AdminDiaEvento.xhtml" />
-				<p:menuitem value="Login" url="Login.xhtml" />
+				<p:menuitem rendered="#{usuarioMB.logado}" value="Alterar Cadastro"
+					url="Usuario.xhtml">
+				</p:menuitem>
+				
+				<p:menuitem rendered="#{usuarioMB.admin}" value="Administração" url="AdminDiaEvento.xhtml" />
+				<p:menuitem rendered="#{!usuarioMB.logado}" value="Login" url="Login.xhtml" />
+				<p:menuitem rendered="#{usuarioMB.logado}" value="Logout" action="#{usuarioMB.logout}"  />
 			</p:tabMenu>
 		</h:form>
 
