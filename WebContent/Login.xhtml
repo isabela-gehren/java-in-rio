@@ -7,7 +7,7 @@
 <h:body>
 	<ui:composition template="./Template.xhtml">
 	<ui:define name="content">
-<h:form>    
+	<h:form>    
 
 	<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 	
@@ -23,7 +23,12 @@
                 <p:commandButton value="Login" update="growl" action="#{usuarioMB.login}" />
             </f:facet>  
         </h:panelGrid>
-</h:form>
+		
+		
+		<p>Ainda não possui cadastro? <a href="Usuario.xhtml">Clique Aqui</a> e faça seu cadastro.</p>
+		
+		</h:form>
+		
 		</ui:define>
 	</ui:composition>
 </h:body>

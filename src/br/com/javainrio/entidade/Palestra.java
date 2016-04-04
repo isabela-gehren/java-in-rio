@@ -20,8 +20,6 @@ public class Palestra implements Serializable {
 	@GeneratedValue
 	private Integer codigo;
 	
-	private Integer diaEventoId;
-	
 	@Column(unique=true)
 	private String titulo;
 	private Date dataHora;
