@@ -10,9 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.print.attribute.standard.Severity;
-
-import br.com.javainrio.entidade.Palestra;
 import br.com.javainrio.entidade.Usuario;
 import br.com.javainrio.facade.UsuarioFacade;
 
@@ -22,6 +19,7 @@ public class UsuarioMB implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Usuario usuario;
+	private Boolean edicao = false;
 
 	@EJB
 	private UsuarioFacade dao;
@@ -31,18 +29,48 @@ public class UsuarioMB implements Serializable {
 	}
 
 	public Usuario getUsuario() {
-		// se tenho o usuario na session entro com ediçao
-		//String codigo = "3e1a964b-7381-4c40-b33d-ff65b78124c8";
-		//if (usuario.getCodigo() != codigo) {
-			
-		//	usuario.setCodigo(codigo);
-		//	usuario = dao.consultar(usuario);
-		//}
+
+		if (!edicao) {
+			// se tenho o usuario na session entro com ediçao
+
+			FacesContext context = FacesContext.getCurrentInstance();
+			ExternalContext externalContext = context.getExternalContext();
+			Object logado = externalContext.getSessionMap().get("usuario");
+
+			if (logado != null) {
+				usuario = dao.consultar((Usuario) logado);
+				edicao = true;
+			}
+		}
 		return usuario;
 	}
 
 	public void setUsuario(Usuario u) {
 		usuario = u;
+	}
+
+	public Boolean getLogado() {
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		Object logado = externalContext.getSessionMap().get("usuario");
+
+		if (logado != null)
+			return true;
+		else
+			return false;
+	}
+
+	public Boolean getAdmin() {
+
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		Object logado = externalContext.getSessionMap().get("usuario");
+
+		if (logado != null) {
+			return ((Usuario) logado).getAdmin();
+		} else
+			return false;
 	}
 
 	public void salvar() {
@@ -63,26 +91,25 @@ public class UsuarioMB implements Serializable {
 	public void limpar() {
 		usuario = new Usuario();
 	}
-	
+
 	public void login() throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext externalContext = context.getExternalContext();
-		
+
 		Usuario temp = dao.autenticar(this.usuario.getEmail(), this.usuario.getSenha());
-		
+
 		if (temp != null) {
 			externalContext.getSessionMap().put("usuario", temp);
 			externalContext.redirect("Index.xhtml");
-		}
-		else {
-			context.addMessage(null,  new FacesMessage("Ops!", "E-Mail ou Senha inválidos!"));
+		} else {
+			context.addMessage(null, new FacesMessage("Ops!", "E-Mail ou Senha inválidos!"));
 		}
 	}
-	
-	public void logout() throws IOException {
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 
-        externalContext.invalidateSession();
-        externalContext.redirect("Login.xhtml");
-    }
+	public void logout() throws IOException {
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+
+		externalContext.invalidateSession();
+		externalContext.redirect("Login.xhtml");
+	}
 }
