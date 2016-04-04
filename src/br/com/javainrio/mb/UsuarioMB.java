@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.print.attribute.standard.Severity;
 
 import br.com.javainrio.entidade.Palestra;
 import br.com.javainrio.entidade.Usuario;
@@ -67,7 +68,7 @@ public class UsuarioMB implements Serializable {
 			externalContext.redirect("Index.xhtml");
 		}
 		else {
-			context.addMessage(null,  new FacesMessage("E-Mail ou Senha inválidos!"));
+			context.addMessage(null,  new FacesMessage("Ops!", "E-Mail ou Senha inválidos!"));
 		}
 	}
 	

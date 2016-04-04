@@ -20,16 +20,31 @@
 				<p:menuitem value="Sobre" url="Index.xhtml" />
 				<p:menuitem value="Programação" url="Programacao.xhtml" />
 				<p:menuitem value="Comprar Ingressos" url="Ingressos.xhtml" />
-				<p:menuitem value="Administração" url="AdminDiaEvento.xhtml" />
+				<p:menuitem value="Administração" url="Administracao.xhtml" />
 				<p:menuitem value="Login" url="Login.xhtml" />
 			</p:tabMenu>
 		</h:form>
 
-		<div class="content" style="padding: 15px; font-family: Verdana;">
-			<ui:insert name="content">
-
-			</ui:insert>
-		</div>
+<p:layout style="min-width:400px;min-height:300px;">
+		    	<p:layoutUnit position="west" resizable="true" size="235" minSize="40" maxSize="400">
+		        	<h:form>   
+						<p:growl id="messages" showDetail="false"/>
+		 				<p:menu>        
+				            <p:menuitem value="Usuários" url="AdminUsuario.xhtml" />
+				            <p:menuitem value="Agenda" url="AdminDiaEvento.xhtml" />
+				            <p:menuitem value="Palestras" url="AdminPalestra.xhtml" />
+				            <p:menuitem value="Relatórios" url="AdminRelatorio.xhtml" />
+		    			</p:menu> 
+					</h:form>
+		    	</p:layoutUnit>
+		    	<p:layoutUnit position="center">
+			        <div class="content" style="padding: 15px; font-family: Verdana;">
+						<ui:insert name="content">
+						</ui:insert>
+					</div>
+		    	</p:layoutUnit>
+			</p:layout>
+		
 		<div class="footer"
 			 style="margin: 20px; border-top: 1px solid; border-color: #E92D2E; font-family: Verdana;">
 			<p>Local: Centro de Convenções SulAmérica</p>

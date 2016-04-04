@@ -19,6 +19,9 @@ public class Palestra implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer codigo;
+	
+	private Integer diaEventoId;
+	
 	@Column(unique=true)
 	private String titulo;
 	private Date dataHora;
