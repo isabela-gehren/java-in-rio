@@ -1,5 +1,6 @@
 package br.com.javainrio.facade;
 
+import java.util.*;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -11,5 +12,5 @@ import br.com.javainrio.entidade.Palestra;
 public interface PalestraFacade extends PalestraDAO {
 
 	List<Palestra> listarDoAnoCorrente();
-
+	List<Palestra> listaDoDia(Date data);
 }

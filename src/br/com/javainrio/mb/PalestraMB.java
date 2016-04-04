@@ -2,6 +2,7 @@ package br.com.javainrio.mb;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -10,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import br.com.javainrio.util.*;
 import br.com.javainrio.entidade.Palestra;
 import br.com.javainrio.facade.PalestraFacade;
 
@@ -99,5 +101,15 @@ public class PalestraMB implements Serializable {
 
 	public void setLista(List<Palestra> lista) {
 		this.lista = lista;
+	}
+	
+	public List<Palestra> listaPorData(Date data) {
+		this.lista = dao.listaDoDia(data);
+		return this.lista;
+	}
+	
+	public String getTitulos(Date data) {
+		this.lista = dao.listaDoDia(data);
+		return PalestraUtils.getPalestraLista(this.lista);
 	}
 }

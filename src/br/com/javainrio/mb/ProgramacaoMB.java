@@ -58,5 +58,8 @@ public class ProgramacaoMB implements Serializable {
 	public void setLista(List<Programacao> lista) {
 		this.lista = lista;
 	}
-
+	
+	public List<Palestra> listaPorData(Date data) {
+		return dao.listaDoDia(data);
+	}
 }
